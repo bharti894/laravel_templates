@@ -189,7 +189,7 @@ Dashboard
 
 <!-- Main content -->
 <section class="content">
-<form action="/edituser/{{$user[0]->id}}" method="post">
+<form action="/edituser/{{$user[0]->id}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="row">
     <div class="col-md-6">
@@ -217,21 +217,21 @@ Dashboard
      <label for="inputStatus">Gender</label>
     <select class="form-control custom-select" name="gender" value="{{$user[0] -> gender}}">
     <option selected disabled>Select one</option>
-    <option>Male</option>
-    <option>Female</option>
-    <option>Transgender</option>
+    <option {{ ( $user[0] -> gender == 'Male') ? 'selected' : '' }}>Male</option>
+    <option {{ ( $user[0] -> gender == 'Female') ? 'selected' : '' }}>Female</option>
+    <option {{ ( $user[0] -> gender == 'Transgender') ? 'selected' : '' }}>Transgender</option>
     </select>
     </div>
 
     <div class="form-group">
-    <label for="inputClientCompany" value="{{$user[0] -> hobby}}" name="hobby">Hobby:</label>
-    <input type="checkbox" name= "Hobby[]" value= "Reading"  >
+    <label>Hobby:</label>
+    <input type="checkbox" name= "Hobby[]" value="Reading" {{Str::contains($user[0]->hobby,'Reading') ? 'checked' : ''}}>
     <label> Reading </label>
+    <label></label>                                   
+    <input type= "checkbox" name= "Hobby[]" value= "Writing" {{Str::contains($user[0]->hobby,'Writing') ? 'checked' : '' }}>
+    <label>Writing</label>  <!-- here we check if writing is in user[0] where user[0] contains REading,writing,Travelling-->
     <label></label>
-    <input type= "checkbox" name= "Hobby[]" value= "writing" >
-    <label>Writing</label>
-    <label></label>
-    <input type="checkbox" name="Hobby[]" value= "Travelling">
+    <input type="checkbox" name="Hobby[]" value= "Travelling" {{Str::contains($user[0]->hobby,'Travelling') ? 'checked' : '' }}>
     <label> Travelling </label>
     <br>
     <!-- <input type="text" id="hobby" name="hobby" class="form-control" value="{{$user[0] -> hobby}}"> -->
@@ -239,7 +239,7 @@ Dashboard
 
     <div class="form-group">
     <label for="inputProjectLeader">File</label>
-    <input type="file" id="inputProjectLeader" class="form-control" name="file"  value="{{$user[0] -> file}}">
+    <input type="file" id="inputProjectLeader" class="form-control" name="file"  >
     </div>
 
     <!-- /.card -->
