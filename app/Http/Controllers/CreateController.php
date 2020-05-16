@@ -34,7 +34,6 @@ class CreateController extends Controller
        $data->gender=$request->input('gender');
        $data->Mobileno= $request->input('Mobileno');
        $data->Hobby=implode($request->input('Hobby'));
-       $data->file=$request->input('file');
 
         if ($request->hasfile('file')) //hasfile checks  file is already present in the request
         {
