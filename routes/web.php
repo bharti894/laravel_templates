@@ -18,11 +18,20 @@ Route::get('/', function () {
 });
 
 
-Route::get('/login','LoginController@view_login');
-Route::post('/login','LoginController@login');
+    Route::get('/login','LoginController@view_login');
+    Route::post('/login','LoginController@login');
+    Route::get('/forgotpassword', 'forgotpasswordController@forgot');
+    Route::post('/forgotpassword', 'forgotpasswordController@email');
+    Route::get('/recoverpassword', 'forgotpasswordController@change');
+    Route::post('/recoverpassword', 'forgotpasswordController@reset');
+    
+
+   
+  
 
 Route::group(['middleware' => 'auth'], function()
 {
+    
     Route::get('/home','HomeController@index');
 
     Route::get('/profile','ProfileController@profile');  
@@ -41,7 +50,9 @@ Route::group(['middleware' => 'auth'], function()
 
     Route::get('/add', 'CreateController@create');
     Route::post('/add', 'CreateController@store');
-
+   
+    
+    
 
 
 
