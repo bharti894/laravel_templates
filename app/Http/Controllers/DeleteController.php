@@ -7,7 +7,8 @@ use DB;
 
 class DeleteController extends Controller
 {
-    public function index() {
+    public function indx() 
+    {
         $users = DB::select('select * from users');
         return view('fetch',['users'=>$users]);
      }
