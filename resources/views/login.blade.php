@@ -27,8 +27,9 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
-
-      <form action="/login" method="post">
+         <!-- /login calling the login post method on web and from web it will find the function and
+         redirect to page where it will mention there -->
+      <form action="/login" method="post"> 
         @csrf
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Username" name="username">
@@ -67,7 +68,7 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
+        <a href="forgotpassword">I forgot my password</a>
       </p>
       <!-- <p class="mb-0">
         <a href="register.html" class="text-center">Register a new membership</a>
